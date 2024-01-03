@@ -143,7 +143,7 @@ namespace MxGobGuanajuato.Flows
             sql.Append("       per.PERPATERNO AS \"apellidoPaterno\",\n");
             sql.Append("       per.PERMATERNO AS \"apellidoMaterno\",\n");
             sql.Append("       1 AS \"idCatTipoPersona\",\n");
-            sql.Append("       CURRENT_TIMESTAMP AS \"fechaActualizacion\",\n");
+            sql.Append("       CURRENT_DATE AS \"fechaActualizacion\",\n");
             sql.Append("       0 AS \"actualizadoPor\",\n");
             sql.Append("       CASE\n");
             sql.Append("        WHEN per.PERBAJA = 0\n");

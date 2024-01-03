@@ -132,6 +132,11 @@ namespace MxGobGuanajuato.Daos
                         mi.IdSubConcepto = null;
                     else
                         mi.IdSubConcepto = (int)OracleDecimal.SetPrecision(odr.GetOracleDecimal(odr.GetOrdinal("IdSubConcepto")), 1).Value;
+                    
+                    if(odr.GetOracleDecimal(odr.GetOrdinal("prioridad")).IsNull)
+                        mi.Prioridad = null;
+                    else
+                        mi.Prioridad = (int)OracleDecimal.SetPrecision(odr.GetOracleDecimal(odr.GetOrdinal("prioridad")), 22).Value;
 
                     mis ??= new();
 

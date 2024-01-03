@@ -5,7 +5,7 @@ using MxGobGuanajuato.Dtos;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 
-namespace MxGobGuanajuato
+namespace MxGobGuanajuato.Daos
 {
     public sealed class GarantiasInfraccionReaderDAO : IReaderData<GarantiasInfraccion>
     {

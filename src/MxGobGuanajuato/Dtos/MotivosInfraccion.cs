@@ -5,29 +5,31 @@ namespace MxGobGuanajuato.Dtos
 {
     public sealed class MotivosInfraccion
     {
-         private static readonly ILog log = LogManager.GetLogger(typeof(MotivosInfraccion));
+        private static readonly ILog log = LogManager.GetLogger(typeof(MotivosInfraccion));
 
-         public required Int32 IdMotivoInfraccion {get; set;}
+        public required Int32 IdMotivoInfraccion {get; set;}
 
-         public required Int32 CalificacionMinima {get; set;}
+        public required Int32 CalificacionMinima {get; set;}
 
-         public required Int32 CalificacionMaxima {get; set;}
+        public required Int32 CalificacionMaxima {get; set;}
 
-         public Int32? Calificacion {get; set;}
+        public Int32? Calificacion {get; set;}
 
-         public DateTime? FechaActualizacion {get; set;}
+        public DateTime? FechaActualizacion {get; set;}
 
-         public Int32? ActualizadoPor {get; set;}
+        public Int32? ActualizadoPor {get; set;}
 
-         public Int32? Estatus {get; set;}
+        public Int32? Estatus {get; set;}
 
-         public Int32? IdCatMotivosInfraccion {get; set;}
+        public Int32? IdCatMotivosInfraccion {get; set;}
 
-         public Int32? IdInfraccion {get; set;}
+        public Int32? IdInfraccion {get; set;}
 
-         public Int32? IdConcepto {get; set;}
+        public Int32? IdConcepto {get; set;}
 
-         public Int32? IdSubConcepto {get; set;}
+        public Int32? IdSubConcepto {get; set;}
+
+        public Int32? Prioridad {get; set;}
 
         public override string? ToString()
         {
@@ -117,6 +119,13 @@ namespace MxGobGuanajuato.Dtos
             str.Append("idSubConcepto");
             str.Append("\": ");
             str.Append(IdSubConcepto);
+            
+            str.Append(", ");
+
+            str.Append('"');
+            str.Append("prioridad");
+            str.Append("\": ");
+            str.Append(Prioridad);
 
             str.Append('}');
 

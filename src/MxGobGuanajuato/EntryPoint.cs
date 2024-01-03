@@ -15,19 +15,19 @@ namespace MxGobGuanajuato
                 {"modalidad", args[0]}
             };
 
-            IFlowData cmif = (IFlowData)ctx.GetObject("catMotivosInfraccionFlow");
+            /*IFlowData cmif = (IFlowData)ctx.GetObject("catMotivosInfraccionFlow");
 
             cmif.Inside(p);
 
             IFlowData inff = (IFlowData)ctx.GetObject("infraccionesFlow");
 
-            inff.Inside(p);
+            inff.Inside(p);*/
 
             IFlowData mif = (IFlowData)ctx.GetObject("motivosInfraccionFlow");
             
             mif.Inside(p);
 
-            IFlowData pif = (IFlowData)ctx.GetObject("personasInfraccionesFlow");
+            /*IFlowData pif = (IFlowData)ctx.GetObject("personasInfraccionesFlow");
             
             pif.Inside(p);
 
@@ -58,6 +58,10 @@ namespace MxGobGuanajuato
             IFlowData iaccf = (IFlowData)ctx.GetObject("involucradosAccidenteFlow");
             
             iaccf.Inside(p);
+
+            IFlowData gif = (IFlowData)ctx.GetObject("garantiasInfraccionFlow");
+            
+            gif.Inside(p);*/
         }
     }
 }

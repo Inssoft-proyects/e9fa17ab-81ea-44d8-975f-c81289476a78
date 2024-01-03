@@ -19,10 +19,10 @@ namespace MxGobGuanajuato.Daos
 
             sql.Append("INSERT INTO [dbo].[motivosInfraccion]([idMotivoInfraccion], [calificacionMinima], [calificacionMaxima], [calificacion],\n");
             sql.Append("									  [fechaActualizacion], [actualizadoPor], [estatus], [idCatMotivosInfraccion],\n");
-            sql.Append("									  [idInfraccion], [IdConcepto], [IdSubConcepto])\n");
+            sql.Append("									  [idInfraccion], [IdConcepto], [IdSubConcepto], [prioridad])\n");
             sql.Append("	   VALUES(@idMotivoInfraccion, @calificacionMinima, @calificacionMaxima, @calificacion,\n");
             sql.Append("			  @fechaActualizacion, @actualizadoPor, @estatus, @idCatMotivosInfraccion,\n");
-            sql.Append("			  @idInfraccion, @IdConcepto, @IdSubConcepto)");
+            sql.Append("			  @idInfraccion, @IdConcepto, @IdSubConcepto, @prioridad)");
 
             this.sql = sql.ToString();
 
@@ -67,6 +67,7 @@ namespace MxGobGuanajuato.Daos
                 scmd.Parameters.AddWithValue("@idInfraccion", mi.IdInfraccion).Value ??= DBNull.Value;
                 scmd.Parameters.AddWithValue("@IdConcepto", mi.IdConcepto).Value ??= DBNull.Value;
                 scmd.Parameters.AddWithValue("@IdSubConcepto", mi.IdSubConcepto).Value ??= DBNull.Value;
+                scmd.Parameters.AddWithValue("@prioridad", mi.Prioridad).Value ??= DBNull.Value;
                 
                 try {
                     r += scmd.ExecuteNonQuery();

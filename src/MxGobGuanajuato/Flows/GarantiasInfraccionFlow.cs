@@ -4,7 +4,7 @@ using MxGobGuanajuato.Base;
 using MxGobGuanajuato.Dtos;
 using Newtonsoft.Json;
 
-namespace MxGobGuanajuato
+namespace MxGobGuanajuato.Flows
 {
     public sealed class GarantiasInfraccionFlow : IFlowData
     {
@@ -131,12 +131,13 @@ namespace MxGobGuanajuato
 
             sql.Append("SELECT INFID AS \"idInfraccion\",\n");
             sql.Append("       INFIDTIPOGARANTIA AS \"idGarantia\",\n");
+            sql.Append("       0 AS \"idCatGarantia\",\n");
             sql.Append("       INFIDTIPOPLACA AS \"idTipoPlaca\",\n");
             sql.Append("       INFIDTIPOLICENCIA AS \"idTipoLicencia\",\n");
             sql.Append("       INFNOPLACA AS \"numPlaca\",\n");
             sql.Append("       INFLICENCIA AS \"numLicencia\",\n");
             sql.Append("       NULL AS \"vehiculoDocumento\",\n");
-            sql.Append("       CURRENT_TIMESTAMP AS \"fechaActualizacion\",\n");
+            sql.Append("       CURRENT_DATE AS \"fechaActualizacion\",\n");
             sql.Append("       0 AS \"actualizadoPor\",\n");
             sql.Append("       CASE\n");
             sql.Append("        WHEN INFBAJA = 0\n");

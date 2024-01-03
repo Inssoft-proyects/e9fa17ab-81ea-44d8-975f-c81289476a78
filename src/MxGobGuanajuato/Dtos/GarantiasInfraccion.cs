@@ -2,7 +2,7 @@
 using System.Text;
 using log4net;
 
-namespace MxGobGuanajuato
+namespace MxGobGuanajuato.Dtos
 {
     public sealed class GarantiasInfraccion
     {
