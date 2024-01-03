@@ -58,6 +58,10 @@ namespace MxGobGuanajuato
             IFlowData iaccf = (IFlowData)ctx.GetObject("involucradosAccidenteFlow");
             
             iaccf.Inside(p);
+
+            IFlowData cninf = (IFlowData)ctx.GetObject("catConceptoInfraccionFlow");
+
+            cninf.Inside(p);
         }
     }
 }
