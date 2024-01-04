@@ -59,9 +59,13 @@ namespace MxGobGuanajuato
             
             iaccf.Inside(p);
 
+            IFlowData cninf = (IFlowData)ctx.GetObject("catConceptoInfraccionFlow");
+
+            cninf.Inside(p);
+
             IFlowData gif = (IFlowData)ctx.GetObject("garantiasInfraccionFlow");
             
-            gif.Inside(p);*/
+            gif.Inside(p);
         }
     }
 }
