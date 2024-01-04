@@ -6,7 +6,7 @@ using MxGobGuanajuato.Base;
 using MxGobGuanajuato.Cnfs;
 using MxGobGuanajuato.Dtos;
 
-namespace MxGobGuanajuato
+namespace MxGobGuanajuato.Daos
 {
     public sealed class GarantiasInfraccionWriterDAO : IWriterData<GarantiasInfraccion>
     {

@@ -134,23 +134,29 @@ namespace MxGobGuanajuato.Flows
                 }
             }
 
-            sql.Append("SELECT infmo.IMID as \"idMotivoInfraccion\",\n");
-            sql.Append("	   catmot.MICALIFICACIONMINIMA as \"calificacionMinima\",\n");
-            sql.Append("	   catmot.MICALIFICACIONMINIMA as \"calificacionMaxima\",\n");
-            sql.Append("	   infmo.IMCALIFICACION as \"calificacion\",\n");
-            sql.Append("	   TO_DATE('2023-08-01','YYYY-MM-DD') as \"fechaActualizacion\",\n");
-            sql.Append("	   0 as \"actualizadoPor\",\n");
-            sql.Append("	   1 as \"estatus\",\n");
-            sql.Append("	   infmo.IMIDMOTIVO as \"idCatMotivosInfraccion\",\n");
-            sql.Append("	   infmo.IMIDINFRACCION as \"idInfraccion\",\n");
-            sql.Append("	   1 as \"IdConcepto\",\n");
-            sql.Append("	   1 as \"IdSubConcepto\"\n");
+            sql.Append("SELECT infmot.IMID AS \"idMotivoInfraccion\",\n");
+            sql.Append("	   catmot.MICALIFICACIONMINIMA AS \"calificacionMinima\",\n");
+            sql.Append("	   catmot.MICALIFICACIONMINIMA AS \"calificacionMaxima\",\n");
+            sql.Append("	   infmot.IMCALIFICACION AS \"calificacion\",\n");
+            sql.Append("	   CURRENT_DATE AS \"fechaActualizacion\",\n");
+            sql.Append("	   0 AS \"actualizadoPor\",\n");
+            sql.Append("       CASE\n");
+            sql.Append("        WHEN infmot.IMIBAJA = 0\n");
+            sql.Append("            THEN 1\n");
+            sql.Append("        ELSE 0\n");
+            sql.Append("       END AS \"estatus\",\n");
+            sql.Append("	   infmot.IMIDMOTIVO AS \"idCatMotivosInfraccion\",\n");
+            sql.Append("	   infmot.IMIDINFRACCION AS \"idInfraccion\",\n");
+            sql.Append("	   concepto.TMIDTIPOMOTIVOINFRACCION AS \"idConcepto\",\n");
+            sql.Append("	   catmot.MIIDTIPOMOTIVOINFRACCION AS \"IdSubConcepto\",\n");
+            sql.Append("	   infmot.IMPRIORIDAD AS \"prioridad\"\n");
             sql.Append("FROM SITTEG.INFRACCIONES inf\n");
-            sql.Append("LEFT JOIN SITTEG.INFRACCIONESENVIADAS infenv on infenv.IEIDINFRACCION=inf.INFID\n");
-            sql.Append("LEFT JOIN SITTEG.ENVIOINFRACCIONES einf on einf.EINID=infenv.IEIDENVIO\n");
-            sql.Append("LEFT JOIN SITTEG.OFICINASRENTAS ofre on inf.INFIDLUGARPAGO=ofre.ORID\n");
-            sql.Append("LEFT JOIN SITTEG.INFRACCIONESMOTIVOS infmo on infmo.IMIDINFRACCION=inf.INFID\n");
-            sql.Append("LEFT JOIN SITTEG.MOTIVOSINFRACCION catmot on infmo.IMIDMOTIVO=catmot.MIID\n");
+            sql.Append("LEFT JOIN SITTEG.INFRACCIONESENVIADAS infenv ON infenv.IEIDINFRACCION = inf.INFID\n");
+            sql.Append("LEFT JOIN SITTEG.ENVIOINFRACCIONES einf ON einf.EINID = infenv.IEIDENVIO\n");
+            sql.Append("LEFT JOIN SITTEG.OFICINASRENTAS ofre ON inf.INFIDLUGARPAGO = ofre.ORID\n");
+            sql.Append("LEFT JOIN SITTEG.INFRACCIONESMOTIVOS infmot ON infmot.IMIDINFRACCION = inf.INFID\n");
+            sql.Append("LEFT JOIN SITTEG.MOTIVOSINFRACCION catmot ON infmot.IMIDMOTIVO = catmot.MIID\n");
+            sql.Append("LEFT JOIN SITTEG.TIPOMOTIVOINFRACCION concepto ON catmot.MIIDTIPOMOTIVOINFRACCION = concepto.TMIID\n");
             sql.Append("WHERE inf.INFID BETWEEN :ini AND :fin\n");
             sql.Append("ORDER BY inf.INFID");
 
